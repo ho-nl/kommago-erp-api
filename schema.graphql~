@@ -106,10 +106,10 @@ type Customer {
   "List of customer addresses (contacts)"
   addresses: [CustomerAddress]
 
-  "The default invoice address (should also be present in the `addresses` field)"
+  "The default invoice address (should also be present in the \`addresses\` field)"
   defaultInvoiceAddress: CustomerAddress
 
-  "The default delivery address (should also be present in the `addresses` field)"
+  "The default delivery address (should also be present in the \`addresses\` field)"
   defaultDeliveryAddress: CustomerAddress
 }
 
