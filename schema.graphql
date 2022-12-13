@@ -76,6 +76,9 @@ type Price {
 
 "ERP Customer entity"
 type Customer {
+  "Internal Number (user-visible)"
+  internalNumber: Int!
+  
   "Customer type"
   type: CustomerType!
 
