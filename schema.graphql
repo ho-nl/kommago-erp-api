@@ -194,9 +194,6 @@ input CustomerInput {
   "VAT number (Magento: customer.taxvat)"
   vatNumber: String
 
-  "KVK number"
-  kvkNumber: String
-
   "The default invoice address (should also be present in the `addresses` field)"
   defaultInvoiceAddressId: Int
 
