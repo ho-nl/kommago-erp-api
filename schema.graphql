@@ -221,7 +221,10 @@ enum PaymentMethodType {
 }
 
 type OrderItem {
-  "Internal number (User-visible, sku in Magento)"
+  "Order item id (sku in Magento)"
+  id: Id
+
+  "Internal number (User-visible)"
   internalNumber: String!
 
   "Name of the product"
