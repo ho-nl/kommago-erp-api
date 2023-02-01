@@ -15,10 +15,15 @@ type Mutation {
   updateCustomer(input: CustomerInput!): UpdateCustomerOutput!
 
   "Create a new CustomerAddress for the currently authorized customer"
-  createCustomerAddress(input: CustomerAddressInput!): CreateCustomerAddressOutput!
+  createCustomerAddress(
+    input: CustomerAddressInput!
+  ): CreateCustomerAddressOutput!
 
   "Update the referenced CustomerAddress"
-  updateCustomerAddress(id: Int!, input: CustomerAddressInput!): UpdateCustomerAddressOutput!
+  updateCustomerAddress(
+    id: Int!
+    input: CustomerAddressInput!
+  ): UpdateCustomerAddressOutput!
 
   "Delete the referenced CustomerAddress"
   deleteCustomerAddress(id: Int!): Boolean
@@ -50,7 +55,6 @@ type ProductsOutput {
   The above query can return something like this if a SKU does not exist:
 
       [Product, null, Product]
-
   """
   products: [Product]
 }
@@ -78,7 +82,7 @@ type Price {
 type Customer {
   "Internal Number (user-visible)"
   internalNumber: Int!
-  
+
   "Customer type"
   type: CustomerType!
 
@@ -172,6 +176,14 @@ type CustomerAddress {
   vatNumber: String
 }
 
+type Package {
+  "The invoice number for this package"
+  invoiceNumber: Number
+
+  "The Track and Trace number for this package"
+  trackAndTraceNumber: String
+}
+
 enum CustomerAddressType {
   INVOICE
   DELIVERY
@@ -191,11 +203,21 @@ enum OrderStatus {
 
 enum ShipmentType {
   SHIPMENT_TO_CUSTOMER_ADDRESS
-  PICKUP
+  PICKUP_FROM_POSTNL_LOCATION
+  PICKUP_ORDER
 }
 
 enum PaymentMethodType {
-
+  CASH_ON_DELIVERY
+  ON_ACCOUNT
+  IN_ADVANCE_BY_BANK
+  CONTANT
+  CREDIT
+  IDEAL
+  CREDIT_CARD
+  CREDIT_APPROVAL
+  SOFORT
+  KLARNA
 }
 
 type OrderItem {
@@ -254,7 +276,6 @@ type OrderAddress {
 
   "VAT number (Magento: address.vat_id)"
   vatNumber: String
-
 }
 
 type Order {
@@ -284,6 +305,9 @@ type Order {
 
   "List of the order items"
   items: [OrderItem]!
+
+  "List of packages"
+  packages: [Package]
 }
 
 "ERP Customer input"
