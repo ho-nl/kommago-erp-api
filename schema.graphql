@@ -178,7 +178,7 @@ type CustomerAddress {
 
 type Package {
   "The invoice number for this package"
-  invoiceNumber: Number
+  invoiceNumber: Int
 
   "The Track and Trace number for this package"
   trackAndTraceNumber: String
@@ -222,7 +222,7 @@ enum PaymentMethodType {
 
 type OrderItem {
   "Order item id (sku in Magento)"
-  id: Id
+  id: ID!
 
   "Internal number (User-visible)"
   internalNumber: String!
@@ -231,13 +231,13 @@ type OrderItem {
   name: String!
 
   "Price at which the product was sold"
-  sellingPrice: Number!
+  sellingPrice: Float!
 
   "Quantity of the product that was ordered"
-  orderedQuantity: Number
+  orderedQuantity: Int!
 
   "Quantity of the product that have been sent"
-  sentQuantity: Number
+  sentQuantity: Int!
 }
 
 type OrderAddress {
@@ -288,8 +288,8 @@ type Order {
   "Current state of the order"
   state: OrderStatus!
 
-  "Date and time at which the order was placed"
-  orderDate: Date!
+  "Date and time at which the order was placed (format 2022-12-23 15:56)"
+  orderDate: String!
 
   "The type of shipment for the order"
   shipmentType: ShipmentType
@@ -301,10 +301,10 @@ type Order {
   invoiceAddress: OrderAddress!
 
   "Total value for the order"
-  grandTotal: Number!
+  grandTotal: Float!
 
   "Total vat tax value for the order"
-  vatValue: Number!
+  vatValue: Float!
 
   "List of the order items"
   items: [OrderItem]!
