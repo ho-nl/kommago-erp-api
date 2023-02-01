@@ -114,6 +114,9 @@ type Customer {
 
   "The default delivery address (should also be present in the `addresses` field)"
   defaultDeliveryAddress: CustomerAddress
+
+  "Lit of the customer orders"
+  orders: [Order]
 }
 
 enum CustomerType {
@@ -172,6 +175,115 @@ type CustomerAddress {
 enum CustomerAddressType {
   INVOICE
   DELIVERY
+}
+
+enum OrderStatus {
+  CREATED
+  PROFORMA_INVOICE
+  READY_TO_BE_SENT_TO_SUPPLIER
+  SENT_TO_THE_SUPPLIER
+  PARTIALLY_RECEIVED
+  READY_FOR_PARTIAL_DELIVERY
+  RECEIVED
+  READY_FOR_DELIVERY
+  SENT_TO_CUSTOMER
+}
+
+enum ShipmentType {
+  SHIPMENT_TO_CUSTOMER_ADDRESS
+  PICKUP
+}
+
+enum PaymentMethodType {
+
+}
+
+type OrderItem {
+  "Internal number (User-visible, sku in Magento)"
+  internalNumber: String!
+
+  "Name of the product"
+  name: String!
+
+  "Price at which the product was sold"
+  sellingPrice: Number!
+
+  "Quantity of the product that was ordered"
+  orderedQuantity: Number
+
+  "Quantity of the product that have been sent"
+  sentQuantity: Number
+}
+
+type OrderAddress {
+  "Company (Magento: address.company)"
+  company: String
+
+  "Title (Magento: address.prefix)"
+  title: String
+
+  "First name (Magento: address.firstname)"
+  firstName: String
+
+  "Last name prefix (Magento: address.middlename)"
+  lastNamePrefix: String
+
+  "Last name (Magento: address.lastname)"
+  lastName: String
+
+  "Phone no. (Magento: address.telephone"
+  phone: String
+
+  "Street (Magento: address.street[0])"
+  street: String
+
+  "Street no. (Magento: address.street[1])"
+  streetNo: String
+
+  "Street no. suffix (Magento: address.street[2])"
+  streetNoSuffix: String
+
+  "Postal code (Magento: address.postcode)"
+  postalCode: String
+
+  "City (Magento: address.city)"
+  city: String
+
+  "Country ISO 3166-1 alpha-2 code (Magento: address.country_id)"
+  country: String
+
+  "VAT number (Magento: address.vat_id)"
+  vatNumber: String
+
+}
+
+type Order {
+  "Internal Number (user-visible)"
+  internalNumber: Int!
+
+  "Current state of the order"
+  state: OrderStatus!
+
+  "Date and time at which the order was placed"
+  orderDate: Date!
+
+  "The type of shipment for the order"
+  shipmentType: ShipmentType
+
+  "The delivery address for the order"
+  deliveryAddress: OrderAddress!
+
+  "The invoice address for the order"
+  invoiceAddress: OrderAddress!
+
+  "Total value for the order"
+  grandTotal: Number!
+
+  "Total vat tax value for the order"
+  vatValue: Number!
+
+  "List of the order items"
+  items: [OrderItem]!
 }
 
 "ERP Customer input"
