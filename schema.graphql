@@ -81,7 +81,7 @@ type Price {
 "ERP Customer entity"
 type Customer {
   "Internal Number (user-visible)"
-  internalNumber: Int!
+  internalNumber: String!
 
   "Customer type"
   type: CustomerType!
@@ -283,7 +283,7 @@ type OrderAddress {
 
 type Order {
   "Internal Number (user-visible)"
-  internalNumber: Int!
+  internalNumber: String!
 
   "Current state of the order"
   state: OrderStatus!
