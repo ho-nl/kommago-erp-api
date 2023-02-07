@@ -120,7 +120,7 @@ type Customer {
   defaultDeliveryAddress: CustomerAddress
 
   "Lit of the customer orders"
-  orders: OrderList
+  orders(pageSize: Int = 20, currentPage: Int = 1): OrderList
 }
 
 enum CustomerType {
@@ -320,10 +320,9 @@ type PageInfo {
   totalCount: Int
 }
 
-type OrderList(pageSize: 20 currentPage: 1) {
+type OrderList {
   items: [Order]
   pageInfo: PageInfo
-
 }
 
 "ERP Customer input"
