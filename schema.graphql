@@ -294,6 +294,9 @@ type Order {
   "The type of shipment for the order"
   shipmentType: ShipmentType
 
+  "The type of shipment for the order"
+  paymentMethodType: PaymentMethodType
+
   "The delivery address for the order"
   deliveryAddress: OrderAddress!
 
