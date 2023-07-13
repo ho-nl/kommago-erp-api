@@ -32,7 +32,7 @@ type Customer {
   internalNumber: String!
 
   "Customer type"
-  type: CustomerType!
+  customerType: CustomerType!
 
   "Email (Magento: customer.email)"
   email: String!
