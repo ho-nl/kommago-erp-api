@@ -119,9 +119,6 @@ type CustomerAddress {
 
   "Country ISO 3166-1 alpha-2 code (Magento: address.country_id)"
   country: String
-
-  "VAT number (Magento: address.vat_id)"
-  vatNumber: String
 }
 
 type Package {
