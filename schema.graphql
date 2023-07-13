@@ -82,7 +82,7 @@ type CustomerAddress {
   id: Int!
 
   "Address type (invoice/delivery)"
-  type: CustomerAddressType!
+  customerAddressType: CustomerAddressType!
 
   "Company (Magento: address.company)"
   company: String
