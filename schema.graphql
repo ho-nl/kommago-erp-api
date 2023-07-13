@@ -3,9 +3,6 @@
 # Following https://www.apollographql.com/docs/technotes/TN0002-schema-naming-conventions/ for naming conventions
 
 type Query {
-  "Fetches ERP product data for the given SKUs. If an unrecognized SKU is given, data should still be returned for the other SKUs, instead of triggering an error"
-  products(skus: [String!]!): ProductsOutput!
-
   "Returns information of the currently authenticated customer. Field can be null if currently authenticated user's email is not known in ERP."
   customer: Customer
 }
@@ -27,55 +24,6 @@ type Mutation {
 
   "Delete the referenced CustomerAddress"
   deleteCustomerAddress(id: Int!): Boolean
-}
-
-"ERP Product entity"
-type Product {
-  "Entity ID"
-  id: Int!
-
-  # TODO: Document sku field
-  sku: String!
-
-  "The product price, excluding any VAT, but including the effective discount for the currently authenticated customer"
-  price: Price!
-
-  "Optionally, the applicable price tiers for this product (and currently authenticated customer)"
-  priceTiers: [PriceTier!]
-}
-
-type ProductsOutput {
-  """
-  A list where the skus are matching the input skus array. If a SKU can not be found, it will return null in that place
-
-      query {
-        products(skus: ['a','b','c'])
-      }
-
-  The above query can return something like this if a SKU does not exist:
-
-      [Product, null, Product]
-  """
-  products: [Product]
-}
-
-type PriceTier {
-  "TODO: Document exact semantics of quantity"
-  quantity: Int!
-
-  price: Price!
-}
-
-enum PriceCurrency {
-  EUR
-}
-
-type Price {
-  "Currency will currently always be EUR"
-  currency: PriceCurrency
-
-  "The price value"
-  value: Float!
 }
 
 "ERP Customer entity"
