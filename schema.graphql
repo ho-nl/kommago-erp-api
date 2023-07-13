@@ -67,7 +67,7 @@ type Customer {
   "The default delivery address (should also be present in the `addresses` field)"
   defaultDeliveryAddress: CustomerAddress
 
-  "Lit of the customer orders"
+  "List of the customer orders"
   orders(pageSize: Int = 20, currentPage: Int = 1): OrderList
 }
 
