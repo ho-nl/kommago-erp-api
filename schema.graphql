@@ -132,6 +132,8 @@ type Package {
 enum CustomerAddressType {
   INVOICE
   DELIVERY
+  ORDER_CONTACT_2
+  CONTACT_PERSON_3
 }
 
 enum OrderStatus {
