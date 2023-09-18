@@ -188,6 +188,9 @@ type OrderItem {
 
   "Quantity of the product that have been sent"
   sentQuantity: Int!
+
+  "Order item id of the parent product, if any"
+  parentId: ID
 }
 
 type OrderAddress {
