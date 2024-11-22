@@ -8,6 +8,9 @@ type Query {
 }
 
 type Mutation {
+  "Informs the ERP to trigger a sync for a newly registered customer"
+  syncCustomer(customerEmail: String)
+
   "Updates the currently authenticated customer"
   updateCustomer(input: CustomerInput!): UpdateCustomerOutput!
 
