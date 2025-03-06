@@ -40,6 +40,9 @@ type Customer {
   "Company name, if applicable"
   companyName: String
 
+  "True if customer has BOR approval"
+  borApproved: Boolean
+
   "Title or prefix (Magento: customer.prefix)"
   title: String
 
